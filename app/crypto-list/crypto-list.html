@@ -1,11 +1,11 @@
-<div ng-app="cryptowatch" ng-controller="View1Ctrl">
+<div ng-app="cryptowatch" ng-controller="CryptoListCtrl">
 <i class="fa fa-caret-down">
 <input type="text" ng-model="filter_ticker">
 
 <table  class="w3-table-all w3-hoverable">
 <tr>
   <th>
-    <a href="#!/view1" ng-click="sortType = 'code'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'code'; sortReverse = !sortReverse">
       Ticker
     </a>
     <span ng-show="sortType == 'code' && !sortReverse" class="arrow down"></span>
@@ -15,24 +15,24 @@
       Quantity
   </th>
   <th align="right">
-    <a href="#!/view1" ng-click="sortType = 'total_value'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'total_value'; sortReverse = !sortReverse">
       Total Value    
     </a>
   </th>
   <th>Target</th>
   <th align="right">Price</th>
   <th align="right">
-    <a href="#!/view1" ng-click="sortType = 'marketcap'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'marketcap'; sortReverse = !sortReverse">
       Market CAP
     </a>
   </th>
   <th align="right">
-    <a href="#!/view1" ng-click="sortType = 'target_price'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'target_price'; sortReverse = !sortReverse">
       Target Price
     </a>
   </th>
   <th align="right">
-    <a href="#!/view1" ng-click="sortType = 'target_total_value'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'target_total_value'; sortReverse = !sortReverse">
       Target total value
     </a>
   </th>

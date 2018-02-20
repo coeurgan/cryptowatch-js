@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute'])
+angular.module('myApp.cryptoList', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
+  $routeProvider.when('/crypto-list', {
+    templateUrl: 'crypto-list/crypto-list.html',
+    controller: 'CryptoListCtrl'
   });
 }])
 
-.controller('View1Ctrl', function($scope, $http) {
+.controller('CryptoListCtrl', function($scope, $http) {
   $scope.sortType     = 'quantity'; // set the default sort type
   $scope.sortReverse  = false;  // set the default sort order
   $scope.coins = [ 
