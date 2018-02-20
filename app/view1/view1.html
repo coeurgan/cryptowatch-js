@@ -1,1 +1,52 @@
-<p>This is the partial for view 1.</p>
+<div ng-app="cryptowatch" ng-controller="View1Ctrl">
+<i class="fa fa-caret-down">
+<input type="text" ng-model="filter_ticker">
+
+<table  class="w3-table-all w3-hoverable">
+<tr>
+  <th>
+    <a href="#" ng-click="sortType = 'code'; sortReverse = !sortReverse">
+      Ticker
+    </a>
+    <span ng-show="sortType == 'code' && !sortReverse" class="arrow down"></span>
+    <i ng-show="sortType == 'code' && !sortReverse" class="fa fa-caret-down"></i>
+  </th>
+  <th>
+      Quantity
+  </th>
+  <th align="right">
+    <a href="#" ng-click="sortType = 'total_value'; sortReverse = !sortReverse">
+      Total Value    
+    </a>
+  </th>
+  <th>Target</th>
+  <th align="right">Price</th>
+  <th align="right">
+    <a href="#" ng-click="sortType = 'marketcap'; sortReverse = !sortReverse">
+      Market CAP
+    </a>
+  </th>
+  <th align="right">
+    <a href="#" ng-click="sortType = 'target_price'; sortReverse = !sortReverse">
+      Target Price
+    </a>
+  </th>
+  <th align="right">
+    <a href="#" ng-click="sortType = 'target_total_value'; sortReverse = !sortReverse">
+      Target total value
+    </a>
+  </th>
+</tr>
+<tr ng-repeat="x in coins | orderBy:sortType:sortReverse | filter:filter_ticker">
+  <td>{{ x.code}}</td>
+  <td>{{ x.quantity}}</td>
+  <td>{{ x.total_value  | currency}}</td>
+  <td>{{ x.target | currency : 'M$' : 0}}</td>
+  <td align="right">{{ x.price | currency}}</td>
+  <td align="right">{{ x.marketcap | millionDollarsFilter | currency : 'M$' : 0}}</td>
+  <td align="right">{{ x.target_price |  currency }}</td>
+  <td align="right">{{ x.target_total_value |  currency }}</td>
+</tr>
+</table>
+
+</div>
