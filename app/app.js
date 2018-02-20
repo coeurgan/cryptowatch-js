@@ -4,7 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.cryptoList',
-  'myApp.view2',
+  'myApp.cryptoDetail',
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
