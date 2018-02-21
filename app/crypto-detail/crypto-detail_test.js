@@ -4,11 +4,12 @@ describe('myApp.cryptoDetail module', function() {
 
   beforeEach(module('myApp.cryptoDetail'));
 
-  describe('cryptoDetail controller', function(){
+  describe('CryptoDetailCtrl controller', function(){
 
     it('should ....', inject(function($controller) {
       //spec body
-      var view2Ctrl = $controller('CryptoDetailCtrl');
+		var $scope = {};
+      var view2Ctrl = $controller('CryptoDetailCtrl', { $scope: $scope });
       expect(view2Ctrl).toBeDefined();
     }));
 

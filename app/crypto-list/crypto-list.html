@@ -1,4 +1,4 @@
-<div ng-app="cryptowatch" ng-controller="CryptoListCtrl">
+<div ng-app="myapp" ng-controller="CryptoListCtrl">
 <i class="fa fa-caret-down">
 <input type="text" ng-model="filter_ticker">
 
@@ -37,7 +37,7 @@
     </a>
   </th>
 </tr>
-<tr ng-repeat="x in coins | orderBy:sortType:sortReverse | filter:filter_ticker">
+<tr ng-repeat="x in coins | orderBy:sortType:sortReverse | filter:filter_ticker" ng-click="go(x)">
   <td>{{ x.code}}</td>
   <td>{{ x.quantity}}</td>
   <td>{{ x.total_value  | currency}}</td>

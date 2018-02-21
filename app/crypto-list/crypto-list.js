@@ -9,7 +9,7 @@ angular.module('myApp.cryptoList', ['ngRoute'])
   });
 }])
 
-.controller('CryptoListCtrl', function($scope, $http) {
+.controller('CryptoListCtrl', function($scope, $http, $location ) {
   $scope.sortType     = 'quantity'; // set the default sort type
   $scope.sortReverse  = false;  // set the default sort order
   $scope.coins = [ 
@@ -44,6 +44,12 @@ angular.module('myApp.cryptoList', ['ngRoute'])
 		//hashCoins[coin.code] = coin;
 	}
     });
+	
+	$scope.go = function(coin) {
+	   console.log("go to " + coin.code);	
+	   $location.path('/crypto-detail/'+coin.code); 
+	};
+	
 })
 
 .filter('millionDollarsFilter', function() {

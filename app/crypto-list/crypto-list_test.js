@@ -8,8 +8,8 @@ describe('myApp.cryptoList module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-		
-      //var cryptoListCtrl = $controller('CryptoListCtrl');
+		var $scope = {};
+      var ctrl = $controller('CryptoListCtrl', { $scope: $scope });
       //expect(cryptoListCtrl).toBeDefined();
     }));
 
