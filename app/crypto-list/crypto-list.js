@@ -9,19 +9,20 @@ angular.module('myApp.cryptoList', ['ngRoute'])
   });
 }])
 
-.controller('CryptoListCtrl', function($scope, $http, $location ) {
+.controller('CryptoListCtrl', function($scope, $rootScope, $http, $location ) {
   $scope.sortType     = 'quantity'; // set the default sort type
   $scope.sortReverse  = false;  // set the default sort order
-  $scope.coins = [ 
+  $rootScope.coins = [ 
 		{ code : "XRB", quantity : "10", target : "10000" }, 
 		{ code : "XBY", quantity : "100", target : "5000" },
 		{ code : "ETH", quantity : "1", target : "200000" }
 		];
    $scope.cmcinfos = [];
+
    //var hashCoins = {};
    var codes = "";
-  for (let i = 0; i < $scope.coins.length; i++) {
-     var coin = $scope.coins[i]
+  for (let i = 0; i < $rootScope.coins.length; i++) {
+     var coin = $rootScope.coins[i]
      coin.index = i
      //hashCoins[coin.code] = coin;
      codes = codes + coin.code + ",";
@@ -34,8 +35,8 @@ angular.module('myApp.cryptoList', ['ngRoute'])
         data = response.data;
 	console.log(data);
 	//coin.price = data.USD;
-	for (let i = 0; i < $scope.coins.length; i++) {
-		var coin = $scope.coins[i];
+	for (let i = 0; i < $rootScope.coins.length; i++) {
+		var coin = $rootScope.coins[i];
 		coin.price = data.RAW[coin.code].USD.PRICE;
 		coin.marketcap = data.RAW[coin.code].USD.MKTCAP;
 		coin.target_price = coin.price * coin.target * 1000000 / coin.marketcap;

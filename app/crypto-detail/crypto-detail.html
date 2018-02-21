@@ -1,1 +1,21 @@
-<h1>Details {{ id }}</h1>
+<div class="w3-card-4" style="width:50%;">
+
+<header class="w3-container w3-teal">
+  <h1>Details {{ coin.code }}</h1>
+</header>
+
+<div class="w3-container">
+  <table>
+	  <tr><td>Quantity</td><td>{{ coin.quantity }}</td></tr>
+	  <tr><td>Value</td><td>{{ coin.total_value  | currency}}</td></tr>
+	  <tr><td>Market CAP</td><td>{{ coin.marketcap | millionDollarsFilter | currency : 'M$' : 0}}</td></tr>
+  </table>
+</div>
+
+<footer class="w3-container w3-teal">
+  <h5>Target value : {{ coin.target_total_value |  currency }}</h5>
+</footer>
+
+</div>
+
+<td align="right"></td>
