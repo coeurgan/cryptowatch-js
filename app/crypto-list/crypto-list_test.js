@@ -8,9 +8,19 @@ describe('myApp.cryptoList module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-		var $scope = {};
-      var ctrl = $controller('CryptoListCtrl', { $scope: $scope });
-      //expect(cryptoListCtrl).toBeDefined();
+	  var $scope = {};
+      var cryptoListCtrl = $controller('CryptoListCtrl', { $scope: $scope });
+      expect(cryptoListCtrl).toBeDefined();
+    }));
+	
+	it('should provide a non empty list of coins', inject(function($controller) {
+      //spec body
+	  var $scope = {};
+	  var $rootScope = {};
+      var cryptoListCtrl = $controller('CryptoListCtrl', { $scope: $scope, $rootScope:$rootScope});
+      expect(cryptoListCtrl).toBeDefined();
+	  expect($rootScope.coins).toBeDefined();
+	  expect($rootScope.coins.length).toBe(3);
     }));
 
   });
