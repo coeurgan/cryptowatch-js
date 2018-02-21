@@ -19,4 +19,23 @@ angular.module('myApp.cryptoDetail', ['ngRoute'])
 	}
     $scope.code = $routeParams.code;
 	$scope.coin = $rootScope.coins.filter(function(value){ return value.code == $scope.code;})[0];
+	$scope.isEdit = false;
+	
+	$scope.originalQuantity = $scope.coin.quantity;
+	$scope.originalTarget = $scope.coin.target;
+	
+	$scope.edit = function() {
+		console.log("Edit " + $scope.coin.code);
+		$scope.isEdit = true;
+	};
+	$scope.save = function() {
+		console.log("Save " + $scope.coin.code);
+		$scope.isEdit = false;
+	};
+	$scope.cancel = function() {
+		console.log("Cancel " + $scope.coin.code);
+		$scope.coin.quantity = $scope.originalQuantity;
+		$scope.coin.target = $scope.originalTarget;
+		$scope.isEdit = false;
+	};
 }]);

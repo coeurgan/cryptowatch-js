@@ -10,8 +10,10 @@ describe('myApp.cryptoDetail module', function() {
       //spec body
 		var $scope = {};
 		var $rootScope = {};
-		$rootScope.coins = [];
-      var view2Ctrl = $controller('CryptoDetailCtrl', { $scope: $scope, $rootScope:$rootScope });
+		$rootScope.coins = [{ code : "XRB", quantity : "10", target : "10000" }];
+				var $routeParams = {};
+		$routeParams.code = 'XRB';
+      var view2Ctrl = $controller('CryptoDetailCtrl', { $scope: $scope, $rootScope:$rootScope, $routeParams:$routeParams });
       expect(view2Ctrl).toBeDefined();
     }));
 	

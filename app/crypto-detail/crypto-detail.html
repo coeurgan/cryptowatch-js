@@ -2,12 +2,13 @@
 <div class="w3-card-4" style="width:50%;">
 
 <header class="w3-container w3-teal">
-  <h1>Details {{ coin.code }}</h1>
+  <h1>Details {{ coin.code }} <a href="#!/crypto-detail/{{coin.code}}" ng-click="edit()"><i class="fa fa-edit" ></i></a></h1>
 </header>
 
 <div class="w3-container">
   <table>
-	  <tr><td>Quantity</td><td>{{ coin.quantity }}</td></tr>
+	  <tr><td>Quantity</td><td><span ng-show="!isEdit">{{ coin.quantity }}</span><input type="text" ng-model="coin.quantity" ng-show="isEdit"/></td></tr>
+	  <tr><td>Target market cap</td><td><span ng-show="!isEdit">{{ coin.target }}</span><input type="text" ng-model="coin.target" ng-show="isEdit"/></td></tr>
 	  <tr><td>Value</td><td>{{ coin.total_value  | currency}}</td></tr>
 	  <tr><td>Market CAP</td><td>{{ coin.marketcap | millionDollarsFilter | currency : 'M$' : 0}}</td></tr>
   </table>
@@ -21,5 +22,8 @@
 </div>
 <div class="w3-container">
 <a href="#!/crypto-list" class="w3-button w3-teal"><< Back to list</a>
+<a href="#!/crypto-detail/{{coin.code}}" class="w3-button w3-teal" ng-show="isEdit" ng-click="save()">Enregistrer</a>
+<a href="#!/crypto-detail/{{coin.code}}" class="w3-button w3-teal" ng-show="isEdit" ng-click="cancel()">Annuler</a>
 </div>
 </p>
+
