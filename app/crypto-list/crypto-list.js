@@ -9,7 +9,7 @@ angular.module('myApp.cryptoList', ['ngRoute'])
   });
 }])
 
-.controller('CryptoListCtrl', function($scope, $rootScope, $http, $location ) {
+.controller('CryptoListCtrl',['$scope', '$rootScope', '$http', '$location', 'complete', function($scope, $rootScope, $http, $location, complete ) {
   $scope.sortType     = 'quantity'; // set the default sort type
   $scope.sortReverse  = false;  // set the default sort order
 	if (!$rootScope.coins) {
@@ -34,7 +34,28 @@ angular.module('myApp.cryptoList', ['ngRoute'])
   console.log(url);
      $http.get(url)
       .then(function(response) {
-        data = response.data;
+		
+		  
+		complete(response);
+    });
+	
+	$scope.go = function(coin) {
+	   console.log("go to " + coin.code);	
+	   $location.path('/crypto-detail/'+coin.code); 
+	};
+	
+}])
+
+.filter('millionDollarsFilter', function() {
+    return function(x) {
+        return x/1000000;
+    };
+})
+
+.factory('complete', ['$rootScope', function($rootScope) {
+   return function(response) {
+        console.log("Function complete."); 
+	   var data = response.data;
 		console.log(data);
 		//coin.price = data.USD;
 		for (let i = 0; i < $rootScope.coins.length; i++) {
@@ -46,17 +67,7 @@ angular.module('myApp.cryptoList', ['ngRoute'])
 			coin.target_total_value=coin.target_price*coin.quantity;
 			//hashCoins[coin.code] = coin;
 		}
-    });
-	
-	$scope.go = function(coin) {
-	   console.log("go to " + coin.code);	
-	   $location.path('/crypto-detail/'+coin.code); 
-	};
-	
-})
+   };
+ }]);
 
-.filter('millionDollarsFilter', function() {
-    return function(x) {
-        return x/1000000;
-    };
-});
+;
