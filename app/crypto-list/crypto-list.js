@@ -29,15 +29,8 @@ angular.module('myApp.cryptoList', ['ngRoute'])
      //hashCoins[coin.code] = coin;
      codes = codes + coin.code + ",";
   }
-  var data;
-  var url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms="+codes+"&tsyms=USD";
-  console.log(url);
-     $http.get(url)
-      .then(function(response) {
-		
-		  
-		complete(response);
-    });
+
+ complete(codes);
 	
 	$scope.go = function(coin) {
 	   console.log("go to " + coin.code);	
@@ -50,24 +43,6 @@ angular.module('myApp.cryptoList', ['ngRoute'])
     return function(x) {
         return x/1000000;
     };
-})
+});
 
-.factory('complete', ['$rootScope', function($rootScope) {
-   return function(response) {
-        console.log("Function complete."); 
-	   var data = response.data;
-		console.log(data);
-		//coin.price = data.USD;
-		for (let i = 0; i < $rootScope.coins.length; i++) {
-			var coin = $rootScope.coins[i];
-			coin.price = data.RAW[coin.code].USD.PRICE;
-			coin.marketcap = data.RAW[coin.code].USD.MKTCAP;
-			coin.target_price = coin.price * coin.target * 1000000 / coin.marketcap;
-			coin.total_value=coin.price*coin.quantity;
-			coin.target_total_value=coin.target_price*coin.quantity;
-			//hashCoins[coin.code] = coin;
-		}
-   };
- }]);
 
-;
