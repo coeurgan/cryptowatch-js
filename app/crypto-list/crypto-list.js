@@ -21,16 +21,9 @@ angular.module('myApp.cryptoList', ['ngRoute'])
 	}
    $scope.cmcinfos = [];
 
-   //var hashCoins = {};
-   var codes = "";
-  for (let i = 0; i < $rootScope.coins.length; i++) {
-     var coin = $rootScope.coins[i]
-     coin.index = i
-     //hashCoins[coin.code] = coin;
-     codes = codes + coin.code + ",";
-  }
 
- coinListService.complete(codes);
+
+ coinListService.getCoins($rootScope.coins);
 	
 	$scope.go = function(coin) {
 	   console.log("go to " + coin.code);	
