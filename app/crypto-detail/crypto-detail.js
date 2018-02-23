@@ -9,16 +9,12 @@ angular.module('myApp.cryptoDetail', ['ngRoute'])
   });
 }])
 
-.controller('CryptoDetailCtrl', ['$scope','$routeParams', '$rootScope', function($scope, $routeParams, $rootScope) {
-	if (!$rootScope.coins) {
-	  $rootScope.coins = [ 
-		{ code : "XRB", quantity : "10", target : "10000" }, 
-		{ code : "XBY", quantity : "100", target : "5000" },
-		{ code : "ETH", quantity : "1", target : "200000" }
-		];
+.controller('CryptoDetailCtrl', ['$scope','$routeParams', '$rootScope',  'coinListService', function($scope, $routeParams, $rootScope, coinListService) {
+	if (!$scope.coins) {
+	  $scope.coins =coinListService.getCoins();
 	}
     $scope.code = $routeParams.code;
-	$scope.coin = $rootScope.coins.filter(function(value){ return value.code == $scope.code;})[0];
+	$scope.coin = $scope.coins.filter(function(value){ return value.code == $scope.code;})[0];
 	$scope.isEdit = false;
 	
 	$scope.originalQuantity = $scope.coin.quantity;
