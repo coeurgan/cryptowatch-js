@@ -1,7 +1,8 @@
 angular.module('myApp.cryptoList')
 
-.factory('complete', ['$rootScope','$http', function($rootScope,$http) {
-   return function(codes) {
+.factory('coinListService', ['$rootScope','$http', function($rootScope,$http) {
+	var service = {};
+   service.complete = function(codes) {
 	    var url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms="+codes+"&tsyms=USD";
 		console.log(url);
 		$http.get(url).then(function(response) {
@@ -20,4 +21,5 @@ angular.module('myApp.cryptoList')
     });
 
    };
+   return service;
  }]);

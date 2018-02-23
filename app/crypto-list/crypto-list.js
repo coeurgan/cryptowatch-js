@@ -9,7 +9,7 @@ angular.module('myApp.cryptoList', ['ngRoute'])
   });
 }])
 
-.controller('CryptoListCtrl',['$scope', '$rootScope', '$http', '$location', 'complete', function($scope, $rootScope, $http, $location, complete ) {
+.controller('CryptoListCtrl',['$scope', '$rootScope', '$http', '$location', 'coinListService', function($scope, $rootScope, $http, $location, coinListService ) {
   $scope.sortType     = 'quantity'; // set the default sort type
   $scope.sortReverse  = false;  // set the default sort order
 	if (!$rootScope.coins) {
@@ -30,7 +30,7 @@ angular.module('myApp.cryptoList', ['ngRoute'])
      codes = codes + coin.code + ",";
   }
 
- complete(codes);
+ coinListService.complete(codes);
 	
 	$scope.go = function(coin) {
 	   console.log("go to " + coin.code);	
