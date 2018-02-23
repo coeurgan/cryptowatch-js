@@ -10,7 +10,7 @@ angular.module('myApp.cryptoList', ['ngRoute'])
 }])
 
 .controller('CryptoListCtrl',['$scope', '$rootScope', '$http', '$location', 'coinListService', function($scope, $rootScope, $http, $location, coinListService ) {
-  $scope.sortType     = 'quantity'; // set the default sort type
+  $scope.sortType     = 'code'; // set the default sort type
   $scope.sortReverse  = false;  // set the default sort order
 	if (!$rootScope.coins) {
 	  $rootScope.coins = [ 
