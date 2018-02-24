@@ -19,8 +19,8 @@ describe('myApp.cryptoList module', function() {
 	  var $rootScope = {};
       var cryptoListCtrl = $controller('CryptoListCtrl', { $scope: $scope, $rootScope:$rootScope});
       expect(cryptoListCtrl).toBeDefined();
-	  expect($rootScope.coins).toBeDefined();
-	  expect($rootScope.coins.length).toBe(3);
+	  expect($scope.coins).toBeDefined();
+	  expect($scope.coins.length).toBe(3);
     }));
 
   });
