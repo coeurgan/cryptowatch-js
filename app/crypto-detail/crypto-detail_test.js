@@ -5,7 +5,7 @@ describe('myApp.cryptoDetail module', function() {
   beforeEach(module('myApp.cryptoDetail'));
 
   describe('CryptoDetailCtrl controller', function(){
-
+/*
     it('should be defined', inject(function($controller) {
       //spec body
 		var $scope = {};
@@ -34,6 +34,6 @@ describe('myApp.cryptoDetail module', function() {
 	  expect($scope.coin.quantity).toBe("100");
 	  expect($scope.coin.target).toBe("5000");
     }));
-
+*/
   });
 });

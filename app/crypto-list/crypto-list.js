@@ -10,19 +10,14 @@ angular.module('myApp.cryptoList', ['ngRoute'])
 }])
 
 .controller('CryptoListCtrl',['$scope', '$rootScope', '$http', '$location', 'coinListService', function($scope, $rootScope, $http, $location, coinListService ) {
-  $scope.sortType     = 'code'; // set the default sort type
-  $scope.sortReverse  = false;  // set the default sort order
-  $scope.coins = coinListService.getCoins();
-  console.log("$scope.coins : " +$scope.coins); 
+    $scope.sortType     = 'code'; // set the default sort type
+    $scope.sortReverse  = false;  // set the default sort order
+    $scope.coins = coinListService.getCoins();
 
+    $scope.go = function(coin) {
+        $location.path('/crypto-detail/'+coin.code);
+    };
 
- 
-	
-	$scope.go = function(coin) {
-	   console.log("go to " + coin.code);	
-	   $location.path('/crypto-detail/'+coin.code); 
-	};
-	
 }])
 
 .filter('millionDollarsFilter', function() {
