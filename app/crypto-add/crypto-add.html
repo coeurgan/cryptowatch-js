@@ -1,0 +1,20 @@
+
+<div class="w3-container w3-teal">
+  <h2>Add a coin</h2>
+</div>
+
+<form class="w3-container">
+
+<input class="w3-input" type="text" ng-model="coin.code">
+<label>Ticker</label>
+
+<input class="w3-input" type="number" ng-model="coin.quantity">
+<label>Quantity</label>
+
+<input class="w3-input" type="number" ng-model="coin.target">
+<label>Target market CAP</label>
+<p>
+<a href="#!/crypto-list/" class="w3-button w3-teal" >Cancel</a>
+<a href="#" class="w3-button w3-teal" ng-click="add()">Add</a>
+</p>
+</form>

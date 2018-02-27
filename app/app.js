@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.cryptoList',
   'myApp.cryptoDetail',
+  'myApp.cryptoAdd',
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

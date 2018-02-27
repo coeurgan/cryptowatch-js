@@ -1,6 +1,13 @@
 <div ng-app="myapp" ng-controller="CryptoListCtrl">
-<input type="text" ng-model="filter_ticker">
 
+<div class="w3-card-4">
+
+<header class="w3-container w3-teal">
+  <h1>Your cryptocurrencies</h1>
+</header>
+
+<input type="text" ng-model="filter_ticker">
+<a href="#!/crypto-add" class="w3-button w3-teal" id="link-add">Add</a>
 <table  class="w3-table-all w3-hoverable">
 <tr>
   <th>
@@ -55,5 +62,5 @@
   <td align="right">{{ x.target_total_value |  currency }}</td>
 </tr>
 </table>
-
+</div>
 </div>

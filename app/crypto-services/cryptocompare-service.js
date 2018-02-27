@@ -42,5 +42,10 @@ angular.module('myApp.cryptoList')
         }
         return "https://min-api.cryptocompare.com/data/pricemultifull?fsyms="+codes+"&tsyms=USD";
     }
+    
+    service.add = function(coin) {
+        coins.push(coin);
+    }
+    
    return service;
  }]);
