@@ -16,8 +16,14 @@ describe('myApp.cryptoDetail module', function() {
 	});
 
   describe('CryptoDetailCtrl controller', function(){
+<<<<<<< HEAD
 
 	it('should be defined', inject(function($controller) {
+=======
+/*
+    it('should be defined', inject(function($controller) {
+      //spec body
+>>>>>>> 644b5c2cd8e394ab495260795b5cb6cd16310f1a
 		var $scope = {};
 		var $rootScope = {};
 		var $routeParams = {};
@@ -33,6 +39,7 @@ describe('myApp.cryptoDetail module', function() {
 		var $rootScope = {};
 		var $routeParams = {};
 		$routeParams.code = 'XBY';
+<<<<<<< HEAD
 
 		var view2Ctrl = $controller('CryptoDetailCtrl', { $scope: $scope, $rootScope:$rootScope, $routeParams:$routeParams ,coinListService:coinListServiceMock});
 		expect(view2Ctrl).toBeDefined();
@@ -55,5 +62,19 @@ describe('myApp.cryptoDetail module', function() {
 	}));
 
 
+=======
+		$rootScope.coins = [		
+			{ code : "XRB", quantity : "10", target : "10000" }, 
+			{ code : "XBY", quantity : "100", target : "5000" },
+			{ code : "ETH", quantity : "1", target : "200000" }
+		];
+      var view2Ctrl = $controller('CryptoDetailCtrl', { $scope: $scope, $rootScope:$rootScope, $routeParams:$routeParams });
+      expect(view2Ctrl).toBeDefined();
+	  expect($scope.coin.code).toBe("XBY");
+	  expect($scope.coin.quantity).toBe("100");
+	  expect($scope.coin.target).toBe("5000");
+    }));
+*/
+>>>>>>> 644b5c2cd8e394ab495260795b5cb6cd16310f1a
   });
 });

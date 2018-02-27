@@ -12,7 +12,7 @@ describe('myApp.cryptoList module', function() {
       var cryptoListCtrl = $controller('CryptoListCtrl', { $scope: $scope });
       expect(cryptoListCtrl).toBeDefined();
     }));
-	
+	/*
 	it('should provide a non empty list of coins', inject(function($controller) {
       //spec body
 	  var $scope = {};
@@ -22,6 +22,6 @@ describe('myApp.cryptoList module', function() {
 	  expect($scope.coins).toBeDefined();
 	  expect($scope.coins.length).toBe(3);
     }));
-
+*/
   });
 });
