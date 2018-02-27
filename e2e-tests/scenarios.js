@@ -5,38 +5,36 @@
 describe('my app', function() {
 
 
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
+  it('should automatically redirect to /crypto-list when location hash/fragment is empty', function() {
     browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
+    expect(browser.getLocationAbsUrl()).toMatch("/crypto-list");
   });
 
 
-  describe('view1', function() {
+  describe('crypto-list', function() {
 
     beforeEach(function() {
-      browser.get('index.html#!/view1');
+      browser.get('index.html#!/crypto-list');
     });
 
 
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
+    it('should render crypto-list when user navigates to /crypto-list', function() {
+      expect(element.all(by.css('[ng-view] h1')).first().getText()).toMatch("Your cryptocurrencies");
     });
 
   });
 
-
-  describe('view2', function() {
+  describe('crypto-detail', function() {
 
     beforeEach(function() {
-      browser.get('index.html#!/view2');
+      browser.get('index.html#!/crypto-detail/XRB');
     });
 
 
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
+    it('should render crypto-detail when user navigates to /crypto-detail', function() {
+      expect(element.all(by.css('[ng-view] h1')).first().getText()).toMatch("Details XRB");
     });
 
   });
+
 });
