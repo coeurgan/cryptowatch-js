@@ -9,7 +9,7 @@ angular.module('myApp.cryptoDetail', ['ngRoute'])
   });
 }])
 
-.controller('CryptoDetailCtrl', ['$scope','$routeParams', '$rootScope',  'coinListService', function($scope, $routeParams, $rootScope, coinListService) {
+.controller('CryptoDetailCtrl', ['$scope','$routeParams', '$rootScope', 'coinListService', function($scope, $routeParams, $rootScope, coinListService) {
 	if (!$scope.coins) {
 	  $scope.coins =coinListService.getCoins();
 	}

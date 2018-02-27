@@ -18,12 +18,6 @@ angular.module('myApp.cryptoList', ['ngRoute'])
         $location.path('/crypto-detail/'+coin.code);
     };
 
-}])
-
-.filter('millionDollarsFilter', function() {
-    return function(x) {
-        return x/1000000;
-    };
-});
+}]);
 
 

@@ -40,18 +40,24 @@ describe('coinListService service', function() {
             var coin = coins[i];
             if (coin.code == "XRB")
             {
-              expect(coin.price).toBe(13.05204);
-              expect(coin.marketcap).toBe(1739161997.95956);                  
+                expect(coin.price).toBe(13.05204);
+                expect(coin.marketcap).toBe(1739161997.95956);
+                expect(coin.total_value).toBe(130.5204);
+                expect(coin.target_price).toBe(75.0478679692465);
             }
             if (coin.code == "XBY")
             {
-              expect(coin.price).toBe(0.1621);
-              expect(coin.marketcap).toBe(105365000);                  
+                expect(coin.price).toBe(0.1621);
+                expect(coin.marketcap).toBe(105365000);
+                expect(coin.total_value).toBe(16.21);
+                expect(coin.target_price).toBe(7.6923076923076925);
             }
             if (coin.code == "ETH")
             {
-              expect(coin.price).toBe(871.88);
-              expect(coin.marketcap).toBe(85316267033.09781);                  
+                expect(coin.price).toBe(871.88);
+                expect(coin.marketcap).toBe(85316267033.09781);
+                expect(coin.total_value).toBe(871.88);
+                expect(coin.target_price).toBe(2043.8775167267004);
             }
         }
     });
