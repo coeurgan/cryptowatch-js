@@ -21,5 +21,11 @@ describe('Cryptowatch', function() {
             listPage.goAdd();
             expect(browser.getLocationAbsUrl()).toMatch("/crypto-add");
         });
+        
+        it('should get to the Detail page if user click on a table row', function() {
+            var listPage = new ListPage();
+            listPage.goToFirstRowDetail(1);
+            expect(browser.getLocationAbsUrl()).toMatch("/crypto-detail/ETH");
+        });
     });
 });
