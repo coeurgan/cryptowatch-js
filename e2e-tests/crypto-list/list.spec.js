@@ -7,10 +7,9 @@ describe('Cryptowatch', function() {
     describe('List view', function() {
 
         beforeEach(function() {
-          browser.get('index.html#!/crypto-list');
+            browser.get('index.html#!/crypto-list');
         });
-
-
+        
         it('should render crypto-list when user navigates to /crypto-list', function() {
             var listPage = new ListPage();
             expect(listPage.title).toMatch("Your cryptocurrencies");
@@ -24,8 +23,43 @@ describe('Cryptowatch', function() {
         
         it('should get to the Detail page if user click on a table row', function() {
             var listPage = new ListPage();
-            listPage.goToFirstRowDetail(1);
+            listPage.goToRowDetail(1);
             expect(browser.getLocationAbsUrl()).toMatch("/crypto-detail/ETH");
+        });
+        
+        it('should get to the Detail page if user click on a table row', function() {
+            var listPage = new ListPage();
+            listPage.goToRowDetail(2);
+            expect(browser.getLocationAbsUrl()).toMatch("/crypto-detail/XBY");
+        });
+        
+        it('should get to the Detail page if user click on a table row', function() {
+            var listPage = new ListPage();
+            listPage.goToRowDetail(3);
+            expect(browser.getLocationAbsUrl()).toMatch("/crypto-detail/XRB");
+        });
+        
+        it('should get sort coins by ticker when user click on the ticker header', function() {
+            var listPage = new ListPage();
+            expect(listPage.tickerCaretUp.isDisplayed()).toBeTruthy();
+            expect(listPage.tickerCaretDown.isDisplayed()).toBeFalsy();
+            expect(listPage.getTicker(1)).toBe("ETH");
+            listPage.sortByTicker();
+            expect(listPage.tickerCaretUp.isDisplayed()).toBeFalsy();
+            expect(listPage.tickerCaretDown.isDisplayed()).toBeTruthy();
+            expect(listPage.getTicker(1)).toBe("XRB");
+        });
+        
+        it('should get sort coins by total value when user click on the total value header', function() {
+            var listPage = new ListPage();
+            expect(listPage.totalValueCaretUp.isDisplayed()).toBeFalsy();
+            expect(listPage.totalValueCaretDown.isDisplayed()).toBeFalsy();
+            listPage.sortByTotalValue();
+            expect(listPage.totalValueCaretUp.isDisplayed()).toBeTruthy();
+            expect(listPage.totalValueCaretDown.isDisplayed()).toBeFalsy();
+            listPage.sortByTotalValue();
+            expect(listPage.totalValueCaretUp.isDisplayed()).toBeFalsy();
+            expect(listPage.totalValueCaretDown.isDisplayed()).toBeTruthy();
         });
     });
 });

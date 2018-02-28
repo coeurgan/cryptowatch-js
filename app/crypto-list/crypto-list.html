@@ -11,44 +11,44 @@
 <table  class="w3-table-all w3-hoverable">
 <tr>
   <th>
-    <a href="#!/crypto-list" ng-click="sortType = 'code'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'code'; sortReverse = !sortReverse" id="ticker-header">
       Ticker
     </a>
-    <i ng-show="sortType == 'code' && !sortReverse" class="fa fa-caret-down"></i>
-    <i ng-show="sortType == 'code' && sortReverse" class="fa fa-caret-up"></i>
+    <i ng-show="sortType == 'code' && sortReverse" class="fa fa-caret-down" id="ticker-caret-down"></i>
+    <i ng-show="sortType == 'code' && !sortReverse" class="fa fa-caret-up" id="ticker-caret-up"></i>
   </th>
   <th>
       Quantity
   </th>
   <th align="right">
-    <a href="#!/crypto-list" ng-click="sortType = 'total_value'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'total_value'; sortReverse = !sortReverse" id="totalvalue-header">
       Total Value    
     </a>
-    <i ng-show="sortType == 'total_value' && !sortReverse" class="fa fa-caret-down"></i>
-    <i ng-show="sortType == 'total_value' && sortReverse" class="fa fa-caret-up"></i>
+    <i ng-show="sortType == 'total_value' && !sortReverse" class="fa fa-caret-down" id="totalvalue-caret-down"></i>
+    <i ng-show="sortType == 'total_value' && sortReverse" class="fa fa-caret-up" id="totalvalue-caret-up"></i>
   </th>
   <th>Target</th>
   <th align="right">Price</th>
   <th align="right">
-    <a href="#!/crypto-list" ng-click="sortType = 'marketcap'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'marketcap'; sortReverse = !sortReverse" id="marketcap-header">
       Market CAP
     </a>
-    <i ng-show="sortType == 'marketcap' && !sortReverse" class="fa fa-caret-down"></i>
-    <i ng-show="sortType == 'marketcap' && sortReverse" class="fa fa-caret-up"></i>
+    <i ng-show="sortType == 'marketcap' && !sortReverse" class="fa fa-caret-down" id="marketcap-caret-down"></i>
+    <i ng-show="sortType == 'marketcap' && sortReverse" class="fa fa-caret-up" id="marketcap-caret-up"></i>
   </th>
   <th align="right">
-    <a href="#!/crypto-list" ng-click="sortType = 'target_price'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'target_price'; sortReverse = !sortReverse" id="target-price-header">
       Target Price
     </a>
-    <i ng-show="sortType == 'target_price' && !sortReverse" class="fa fa-caret-down"></i>
-    <i ng-show="sortType == 'target_price' && sortReverse" class="fa fa-caret-up"></i>
+    <i ng-show="sortType == 'target_price' && !sortReverse" class="fa fa-caret-down" id="target-price-caret-down"></i>
+    <i ng-show="sortType == 'target_price' && sortReverse" class="fa fa-caret-up" id="target-price-caret-up"></i>
   </th>
   <th align="right">
-    <a href="#!/crypto-list" ng-click="sortType = 'target_total_value'; sortReverse = !sortReverse">
+    <a href="#!/crypto-list" ng-click="sortType = 'target_total_value'; sortReverse = !sortReverse"  id="target-totalvalue-header">
       Target total value
     </a>
-    <i ng-show="sortType == 'target_total_value' && !sortReverse" class="fa fa-caret-down"></i>
-    <i ng-show="sortType == 'target_total_value' && sortReverse" class="fa fa-caret-up"></i>
+    <i ng-show="sortType == 'target_total_value' && !sortReverse" class="fa fa-caret-down" id="target-totalvalue-caret-down"></i>
+    <i ng-show="sortType == 'target_total_value' && sortReverse" class="fa fa-caret-up" id="target-totalvalue-caret-up"></i>
   </th>
 </tr>
 <tr ng-repeat="x in coins | orderBy:sortType:sortReverse | filter:filter_ticker" ng-click="go(x)">
