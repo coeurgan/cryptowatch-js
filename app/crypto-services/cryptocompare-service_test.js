@@ -14,36 +14,22 @@ describe('Cryptocompare service', function() {
     }));
     
 
-    
-    it("should throw an exception", function () {
-        
-        var coins = [];
-        expect( function(){ service.getUrl(coins) } ).toThrowError(Error, "No coins.");
-    });
-    
-    it("should use a correct URL with only one coin", function () {
-        var coins = [{ code : "XRB"}];
-        expect(service.getUrl(coins)).toBe("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=XRB,&tsyms=USD");
-    });
-    
-    it("should use a correct URL with multiple coin", function () {
-        var coins = [{ code : "XRB"},{ code : "BTC"},{ code : "LTC"}];
-        expect(service.getUrl(coins)).toBe("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=XRB,BTC,LTC,&tsyms=USD");
-    });
-    
     it("should get a completed list of coins", function () {
-        mockHttp.expectGET('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=XRB,XBY,ETH,&tsyms=USD').respond(200, {"RAW":{"XRB":{"USD":{"PRICE":"13.05204","MKTCAP":1739161997.95956}},"XBY":{"USD":{"PRICE":"0.1621","MKTCAP":105365000}},"ETH":{"USD":{"PRICE":871.88,"MKTCAP":85316267033.09781}}}});
-        var coins = service.getCoins();
-        mockHttp.flush();
+        mockHttp.expectGET('http://localhost:3000/cryptos').respond(200, '[{"code":"XRB","quantity":12,"target":10000,"price":12.34,"marketcap":123456789}]');
+
+        var coins = service.getCoins(function(coins){
+            mockHttp.flush();
         expect(coins.length).toBe(3);
         for (let i = 0; i < coins.length; i++) {
             var coin = coins[i];
             if (coin.code == "XRB")
             {
-                expect(coin.price).toBe(13.05204);
-                expect(coin.marketcap).toBe(1739161997.95956);
-                expect(coin.total_value).toBe(130.5204);
-                expect(coin.target_price).toBe(75.0478679692465);
+                expect(coin.quantity).toBe(12);
+                expect(coin.target).toBe(10000);
+                expect(coin.price).toBe(12.34);
+                expect(coin.marketcap).toBe(1234567890);
+                expect(coin.total_value).toBe(148.08);
+                expect(coin.target_price).toBe(99.9540009096);
             }
             if (coin.code == "XBY")
             {
@@ -60,6 +46,8 @@ describe('Cryptocompare service', function() {
                 expect(coin.target_price).toBe(2043.8775167267004);
             }
         }
+        });
+        
     });
 
 

@@ -17,40 +17,41 @@ describe('myApp.cryptoDetail module', function() {
     it('should be defined', inject(function($controller) {
         //spec body
         var $scope = {};
-        var $rootScope = {};
-        $rootScope.coins = [{ code : "XRB", quantity : "10", target : "10000" }];
         var $routeParams = {};
         $routeParams.code = 'XRB';
-        var view2Ctrl = $controller('CryptoDetailCtrl', { $scope: $scope, $routeParams:$routeParams, $rootScope:$rootScope, coinListService:service});
+        var view2Ctrl = $controller('CryptoDetailCtrl', 
+                            { $scope: $scope, $routeParams:$routeParams, coinListService:service});
         expect(view2Ctrl).toBeDefined();
     }));
-
     it('should provide the selected coin', inject(function($controller) {
         //spec body
         var $scope = {};
-        var $rootScope = {};
         var $routeParams = {};
         $routeParams.code = 'XBY';
-        $rootScope.coins = [		
+        $scope.coins = [		
             { code : "XRB", quantity : "10", target : "10000" }, 
             { code : "XBY", quantity : "100", target : "5000" },
             { code : "ETH", quantity : "1", target : "200000" }
         ];
-        var view2Ctrl = $controller('CryptoDetailCtrl', { $scope: $scope, $rootScope:$rootScope, $routeParams:$routeParams });
+        var view2Ctrl = $controller('CryptoDetailCtrl', 
+                            { $scope: $scope, $routeParams:$routeParams, coinListService:service});
         expect(view2Ctrl).toBeDefined();
         expect($scope.coin.code).toBe("XBY");
         expect($scope.coin.quantity).toBe("100");
         expect($scope.coin.target).toBe("5000");
     }));
-    
-    	it('should make the editable fields visible', inject(function($controller) {
+    it('should make the editable fields visible', inject(function($controller) {
 		var $scope = {};
-		var $rootScope = {};
 		var $routeParams = {};
 		$routeParams.code = 'XBY';
-
-		var view2Ctrl = $controller('CryptoDetailCtrl', { $scope: $scope, $rootScope:$rootScope, $routeParams:$routeParams ,coinListService:service});
-		expect(view2Ctrl).toBeDefined();
+        $scope.coins = [		
+            { code : "XRB", quantity : "10", target : "10000" }, 
+            { code : "XBY", quantity : "100", target : "5000" },
+            { code : "ETH", quantity : "1", target : "200000" }
+        ];
+        var view2Ctrl = $controller('CryptoDetailCtrl', 
+                            { $scope: $scope, $routeParams:$routeParams, coinListService:service});
+        expect(view2Ctrl).toBeDefined();
 
 		$scope .edit();
 		expect($scope.isEdit).toBe(true);
