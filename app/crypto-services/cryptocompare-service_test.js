@@ -1,6 +1,6 @@
 'use strict';
 
-describe('coinListService service', function() {
+describe('Cryptocompare service', function() {
 
     var service, mockHttp;
     beforeEach(module('myApp.cryptoList', function ($provide) {

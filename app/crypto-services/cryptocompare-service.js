@@ -4,30 +4,45 @@ angular.module('myApp.cryptoList')
 	var service = {};
 	var coins;
 
-    service.getCoins = function() {
+    service.getServerCoins = function() {
+
+        
+        coins = [];
+        //console.log(url);
+
+        console.log("retour getServerCoins");
+        return coins;
+    };
+    
+    service.getCoins = function(success) {
 		if (!coins) {
-			coins = [ 
-				{ code : "XRB", quantity : "10", target : "10000" }, 
-				{ code : "XBY", quantity : "100", target : "5000" },
-				{ code : "ETH", quantity : "1", target : "200000" }
-				];
+            //coins = [{code:"BTC"}];
+            //success(coins);
+            
+            var url = "http://localhost:3000/cryptos";
+            $http.get(url).then(function(response) {
+                coins = response.data;
+                for (let i = 0; i < coins.length; i++) {
+                    var coin = coins[i];
+                    coin.target_price = coin.price * coin.target * 1000000 / coin.marketcap;
+                    coin.total_value=coin.price*coin.quantity;
+                    coin.target_total_value=coin.target_price*coin.quantity;
+                }
+                success(coins);
+            }.bind(this));
+            
 		}
+        /*
         var url = this.getUrl(coins);
         //console.log(url);
 		$http.get(url).then(function(response) {
 			var data = response.data;
-			for (let i = 0; i < coins.length; i++) {
-				var coin = coins[i];
-				coin.price = Number(data.RAW[coin.code].USD.PRICE);
-				coin.marketcap = Number(data.RAW[coin.code].USD.MKTCAP);
-				coin.target_price = coin.price * coin.target * 1000000 / coin.marketcap;
-				coin.total_value=coin.price*coin.quantity;
-				coin.target_total_value=coin.target_price*coin.quantity;
-			}
+
             
 		});
+        */
         //console.log(coins);
-		return coins;
+
    };
     service.getUrl = function(coins) {
         if (!coins || coins.length == 0)
