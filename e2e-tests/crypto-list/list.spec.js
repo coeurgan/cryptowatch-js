@@ -4,11 +4,17 @@
 
 describe('Cryptowatch', function() {
     var ListPage = require('./list.page');
+    var mockHttp;
     describe('List view', function() {
+        beforeEach(module('myApp.cryptoList', function ($provide) {
+            
+            //$provide.value("$http", mockHttp);
+        }));
 
-        beforeEach(function() {
+        beforeEach(inject(function ($injector) {
             browser.get('index.html#!/crypto-list');
-        });
+            mockHttp = $injector.get('$httpBackend');
+        }));
         
         it('should render crypto-list when user navigates to /crypto-list', function() {
             var listPage = new ListPage();
