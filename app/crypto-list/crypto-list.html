@@ -6,8 +6,8 @@
   <h1>Your cryptocurrencies</h1>
 </header>
 
-<input type="text" ng-model="filter_ticker">
-<a href="#!/crypto-add" class="w3-button w3-teal" id="link-add">Add</a>
+
+
 <table  class="w3-table-all w3-hoverable">
 <tr>
   <th>
@@ -64,5 +64,17 @@
   <td><i class="fa fa-trash" ng-click="delete(x)"></i></td>
 </tr>
 </table>
+<p>
+<div>
+ <div class="filter">
+    <input type="text" ng-model="filter_ticker">
+ </div>
+
+ <div class="add">
+  <a href="#!/crypto-add" class="w3-button w3-teal" id="link-add"><i class="fa fa-plus"></i></a>
+ </div>
+</div>
+
+</p>
 </div>
 </div>

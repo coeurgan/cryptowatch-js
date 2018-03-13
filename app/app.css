@@ -20,6 +20,20 @@
 }
 
 .menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+	  content: "|";
+	  padding-right: 0.3em;
+}
+
+.filter {
+	float:left;
+	width:240px;
+}
+
+.add {
+	float:right;
+	/*margin-left:245px;*/
+}
+
+.footer {
+	clear:both;
 }
