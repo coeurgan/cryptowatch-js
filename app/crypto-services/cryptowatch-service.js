@@ -29,8 +29,20 @@ angular.module('myApp.cryptoList')
                 success();
             }, 
             function(response) {
-                console.log("ERREUR");
-                console.log(response);
+                console.log("ERREUR AJOUT "+coin.code);
+            }     
+        );
+    }
+    
+    service.delete = function(coin, success) {
+        var url = "http://localhost:3000/cryptos/"+coin.code;
+        $http.delete(url)
+        .then(
+            function(response) {
+                success();
+            }, 
+            function(response) {
+                console.log("ERREUR SUPRESSION "+coin.code);
             }     
         );
     }

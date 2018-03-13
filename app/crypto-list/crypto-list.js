@@ -20,6 +20,13 @@ angular.module('myApp.cryptoList', ['ngRoute'])
     $scope.go = function(coin) {
         $location.path('/crypto-detail/'+coin.code);
     };
+    
+    $scope.delete = function(coin) {
+        coinListService.delete(coin, function() {
+            console.log("coin " + coin.code + " deleted.");
+            $location.path('/crypto-list/');
+        });
+    };
 
 }]);
 

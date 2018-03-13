@@ -50,16 +50,18 @@
     <i ng-show="sortType == 'target_total_value' && !sortReverse" class="fa fa-caret-down" id="target-totalvalue-caret-down"></i>
     <i ng-show="sortType == 'target_total_value' && sortReverse" class="fa fa-caret-up" id="target-totalvalue-caret-up"></i>
   </th>
+  <th></th>
 </tr>
-<tr ng-repeat="x in coins | orderBy:sortType:sortReverse | filter:filter_ticker" ng-click="go(x)">
-  <td>{{ x.code}}</td>
-  <td>{{ x.quantity}}</td>
-  <td>{{ x.total_value  | currency}}</td>
-  <td>{{ x.target | currency : 'M$' : 0}}</td>
-  <td align="right">{{ x.price | currency}}</td>
-  <td align="right">{{ x.marketcap | millionDollarsFilter | currency : 'M$' : 0}}</td>
-  <td align="right">{{ x.target_price |  currency }}</td>
-  <td align="right">{{ x.target_total_value |  currency }}</td>
+<tr ng-repeat="x in coins | orderBy:sortType:sortReverse | filter:filter_ticker" >
+  <td ng-click="go(x)">{{ x.code}}</td>
+  <td ng-click="go(x)">{{ x.quantity}}</td>
+  <td ng-click="go(x)">{{ x.total_value  | currency}}</td>
+  <td ng-click="go(x)">{{ x.target | currency : 'M$' : 0}}</td>
+  <td ng-click="go(x)" align="right">{{ x.price | currency}}</td>
+  <td ng-click="go(x)" align="right">{{ x.marketcap | millionDollarsFilter | currency : 'M$' : 0}}</td>
+  <td ng-click="go(x)" align="right">{{ x.target_price |  currency }}</td>
+  <td ng-click="go(x)" align="right">{{ x.target_total_value |  currency }}</td>
+  <td><i class="fa fa-trash" ng-click="delete(x)"></i></td>
 </tr>
 </table>
 </div>
