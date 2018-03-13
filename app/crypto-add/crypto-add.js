@@ -16,9 +16,11 @@ angular.module('myApp.cryptoAdd', ['ngRoute'])
     {
         if ($scope.coin.quantity && $scope.coin.target && $scope.coin.code)
         {
-            coinListService.add($scope.coin);
-            console.log("coin " + $scope.coin.code + " added.");
-            $location.path('/crypto-list/');
+            coinListService.add($scope.coin, function() {
+                console.log("coin " + $scope.coin.code + " added.");
+                $location.path('/crypto-list/');
+            });
+
         }
     }
 }]);

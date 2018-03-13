@@ -1,6 +1,6 @@
 angular.module('myApp.cryptoList')
 
-.factory('coinListService', ['$rootScope','$http', function($rootScope,$http) {
+.factory('coinListService', ['$rootScope','$http', function($rootScope, $http) {
 	var service = {};
    
     service.getCoins = function(success) {
@@ -21,8 +21,18 @@ angular.module('myApp.cryptoList')
         });
    };
     
-    service.add = function(coin) {
-        coins.push(coin);
+    service.add = function(coin, success) {
+        var url = "http://localhost:3000/cryptos";
+        $http.post(url, {code : coin.code, quantity : coin.quantity, target : coin.target})
+        .then(
+            function(response) {
+                success();
+            }, 
+            function(response) {
+                console.log("ERREUR");
+                console.log(response);
+            }     
+        );
     }
     
    return service;

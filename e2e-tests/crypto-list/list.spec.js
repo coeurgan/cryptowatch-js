@@ -6,10 +6,7 @@ describe('Cryptowatch', function() {
     var ListPage = require('./list.page');
     var mockHttp;
     describe('List view', function() {
-        beforeEach(module('myApp.cryptoList', function ($provide) {
-            
-            //$provide.value("$http", mockHttp);
-        }));
+        /*
 
         beforeEach(inject(function ($injector) {
             browser.get('index.html#!/crypto-list');
@@ -67,5 +64,6 @@ describe('Cryptowatch', function() {
             expect(listPage.totalValueCaretUp.isDisplayed()).toBeFalsy();
             expect(listPage.totalValueCaretDown.isDisplayed()).toBeTruthy();
         });
+        */
     });
 });
