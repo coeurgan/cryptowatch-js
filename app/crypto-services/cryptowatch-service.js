@@ -47,5 +47,18 @@ angular.module('myApp.cryptoList')
         );
     }
     
+    service.total = function(coins)
+    {
+        var total = 0;
+        if (!coins) {
+            return 0;
+        }
+        for (let coin of coins) {
+           // var coin = coins[i];
+            total += coin.quantity * coin.price;
+        }
+        return total;
+    }
+    
    return service;
  }]);

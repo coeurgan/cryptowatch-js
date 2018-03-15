@@ -27,6 +27,11 @@ angular.module('myApp.cryptoList', ['ngRoute'])
             $location.path('/crypto-list/');
         });
     };
+    
+    $scope.total = function()
+    {
+        return coinListService.total($scope.coins);
+    };
 
 }]);
 
